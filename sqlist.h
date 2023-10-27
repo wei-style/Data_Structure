@@ -34,5 +34,10 @@ int insert(sqlink L, data_t value, int pos);
 int list_show(sqlink L);
 //销毁线性表
 int list_free(sqlink L);
-
+//删除元素
+int list_delete(sqlink L, int pos);
+//求两个表的并集
+int list_merge(sqlink L1, sqlink L2);
+//删除线性表中的重复元素
+int list_purge(sqlink L);
 
