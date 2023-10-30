@@ -65,3 +65,51 @@ int list_show(linklist H)
 	printf("\n");
 	return 0;
 }
+linklist list_get(linklist H, int pos)
+{
+if(H==NULL)
+{
+	printf("list is ilegal,cannout get the list\n");
+	return -1;
+}
+if (pos == -1)
+{
+	return H;
+}
+linklist q;//用来从表头开始遍历
+q = H;
+int i=-1;//假设表头为-1的位置
+while (i < pos)
+{
+	q = q->next;
+	if (q == NULL)
+	{
+		printf("this pos is ilegal\n");
+		return NULL;
+	}
+	i++;
+}
+return q;
+}
+int list_insert(linklist H, data_t value, int pos)
+{	//创建一个新节点用来存放新数据
+	linklist q = list_create();
+	if (q == NULL)
+	{
+		printf("pos is ilegal\n");
+		return -1;
+	}
+	if (q == NULL)
+	{
+		printf("list insert failed\n");
+		return -1;
+	}
+	q->data = value;
+	//找到pos对应节点的前一个节点
+	linklist p = list_get(H, pos - 1);
+	//让pos指向下一个节点
+	q->next=p->next;
+	//让pos之前的节点指向pos节点
+	p->next = q;
+	return 0;
+}
