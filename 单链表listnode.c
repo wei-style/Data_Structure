@@ -113,3 +113,50 @@ int list_insert(linklist H, data_t value, int pos)
 	p->next = q;
 	return 0;
 }
+int list_delete(linklist H, int pos)
+{
+	linklist p;
+
+	if (H == NULL)
+	{
+		printf("list is NULL\n");
+		return -1;
+	}
+	p = list_get(H, pos-1);//找到前一个的地址
+	if (p == NULL)
+	{
+		return -1;
+	}
+	if (p->next == NULL)//判断语句一定要是==，如果是=那就成赋值语句了
+	{
+		printf("delete pos is invalid\n");
+		return -1;
+	}
+	linklist q;
+	q = p->next;
+	p->next = q->next;
+	printf("free: %d\n", q->data);
+	free(q);
+	q = NULL;
+	return 0;
+}
+
+linklist list_free(linklist H)
+{
+	linklist p;
+	p = H;
+	printf("free:");
+	if (H == NULL)
+	{
+		return NULL;
+	}
+	while (H != NULL)
+	{
+		p = H;
+		printf("%d ",(H)->data);
+		(H) = (H)->next;
+		free(p);
+	}
+	puts("");
+	return NULL;
+}
