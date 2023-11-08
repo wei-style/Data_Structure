@@ -14,6 +14,11 @@ typedef struct node
 linklist list_create(void);
 int list_insert_tail(linklist H,data_t value);
 int list_show(linklist H);
-linklist list_get(linklist H, int pos);//ÕÒµ½Á´±íÖĞÄ³¸ö½áµã£¬·µ»ØÖ¸Ïò¸Ã½áµãµÄÖ¸Õë
-linklist list_insert(linklist H, data_t data, int pos);//Á´±íÖĞÈÎÒâÎ»ÖÃ²åÈë
+linklist list_get(linklist H, int pos);//æ‰¾åˆ°é“¾è¡¨ä¸­æŸä¸ªç»“ç‚¹ï¼Œè¿”å›æŒ‡å‘è¯¥ç»“ç‚¹çš„æŒ‡é’ˆ
+linklist list_insert(linklist H, data_t data, int pos);//é“¾è¡¨ä¸­ä»»æ„ä½ç½®æ’å…¥
 int list_delete(linklist H, int pos);
+
+linklist list_free(linklist H);
+int list_reverse(linklist H);
+linklist list_adjmax(linklist H);
+linklist list_merge(linklist H1, linklist H2);
