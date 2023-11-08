@@ -21,18 +21,18 @@ int list_insert_tail(linklist H, data_t value)
 		printf("list is ilegal,cannot insert\n");
 		return -1;
 	}
-	//´´Á¢ĞÂ½áµãÓÃÀ´´æ·ÅÊı¾İ
+	//åˆ›ç«‹æ–°ç»“ç‚¹ç”¨æ¥å­˜æ”¾æ•°æ®
 	linklist q;
 	q = list_create();
 	q->data = value;
-	//ÕÒµ½×îºóµÄ½áµã£¬×îºóµÄ½áµãÖĞnext´¢´æµÄÊÇNULL
+	//æ‰¾åˆ°æœ€åçš„ç»“ç‚¹ï¼Œæœ€åçš„ç»“ç‚¹ä¸­nextå‚¨å­˜çš„æ˜¯NULL
 	linklist p;
 	p = H;
 	while (p->next!= NULL)
 	{
 		p = p->next;
 	}
-	//ÕÒµ½×îºóÒ»¸ö½áµãºó£¬ÈÃÕâ¸ö½áµãµÄnextÖ¸ÏòĞÂ´´½¨µÄ½Úµã£¬ÕâÑù¾ÍÊµÏÖÁËÎ²²¿²åÈë
+	//æ‰¾åˆ°æœ€åä¸€ä¸ªç»“ç‚¹åï¼Œè®©è¿™ä¸ªç»“ç‚¹çš„nextæŒ‡å‘æ–°åˆ›å»ºçš„èŠ‚ç‚¹ï¼Œè¿™æ ·å°±å®ç°äº†å°¾éƒ¨æ’å…¥
 	p->next = q;
 	q->next = NULL;
 	return 1;
@@ -59,18 +59,18 @@ linklist list_get(linklist H, int pos)
 		printf("list is ilegal\n");
 		return NULL;
 	}
-	if (pos < -1)//¼ÙÉè±íÍ·ÎªµÚ-1¸ö½áµã
+	if (pos < -1)//å‡è®¾è¡¨å¤´ä¸ºç¬¬-1ä¸ªç»“ç‚¹
 	{
 		printf("pos is ilegal\n");
 		return NULL;
 	}
-	//¿ªÊ¼±éÀúÕâ¸öÁ´±í,Ñ°ÕÒposÕâ¸öÎ»ÖÃµÄ½áµã
+	//å¼€å§‹éå†è¿™ä¸ªé“¾è¡¨,å¯»æ‰¾posè¿™ä¸ªä½ç½®çš„ç»“ç‚¹
 
-	int i = -1;//´Ó±íÍ·¿ªÊ¼±éÀú£¬Ã¿ºóÒÆÒ»Î»i+1£¬i´ú±íµÄ¾ÍÊÇ½áµãÎ»ÖÃ
+	int i = -1;//ä»è¡¨å¤´å¼€å§‹éå†ï¼Œæ¯åç§»ä¸€ä½i+1ï¼Œiä»£è¡¨çš„å°±æ˜¯ç»“ç‚¹ä½ç½®
 	while (i < pos)
 	{
 		H = H->next;
-		if(H==NULL)//Èç¹û²éÕÒµ½±íÎ²ÒÀÈ»Ã»ÕÒµ½pos¶ÔÓ¦µÄ½áµã£¬Ôò·µ»Ø¿ÕÖ¸Õë
+		if(H==NULL)//å¦‚æœæŸ¥æ‰¾åˆ°è¡¨å°¾ä¾ç„¶æ²¡æ‰¾åˆ°poså¯¹åº”çš„ç»“ç‚¹ï¼Œåˆ™è¿”å›ç©ºæŒ‡é’ˆ
 		{
 			printf("pos is ilegal\n");
 			return NULL;
@@ -86,22 +86,22 @@ linklist list_insert(linklist H, data_t data, int pos)
 		printf("list is ilegal\n");
 		return NULL;
 	}
-	//´´½¨ĞÂ½áµã´æ·ÅÊı¾İ
+	//åˆ›å»ºæ–°ç»“ç‚¹å­˜æ”¾æ•°æ®
 	linklist p;
 	p = list_create();
 	p->data = data;
-	//ÕÒµ½Òª²åÈëÎ»ÖÃµÄÇ°Ò»¸ö½áµãµÄÖ¸Õë
+	//æ‰¾åˆ°è¦æ’å…¥ä½ç½®çš„å‰ä¸€ä¸ªç»“ç‚¹çš„æŒ‡é’ˆ
 	linklist q = list_get(H, pos - 1);
-	//Èç¹ûÕÒ²»µ½Õâ¸öÖ¸ÕëËµÃ÷pos²»ºÏ·¨
+	//å¦‚æœæ‰¾ä¸åˆ°è¿™ä¸ªæŒ‡é’ˆè¯´æ˜posä¸åˆæ³•
 	if (q == NULL)
 	{
 		printf("pos is ilegal\n");
 			return NULL;
 	}
-	//ÕÒµ½Õâ¸öÖ¸Õëºó
-	//ÈÃĞÂ½áµãÖĞµÄnextÖ¸ÏòposµÄÏÂÒ»¸ö½áµã
+	//æ‰¾åˆ°è¿™ä¸ªæŒ‡é’ˆå
+	//è®©æ–°ç»“ç‚¹ä¸­çš„nextæŒ‡å‘posçš„ä¸‹ä¸€ä¸ªç»“ç‚¹
 	p->next = q->next;
-	//ÈÃposÇ°Ò»¸ö½áµãµÄnextÖ¸ÏòĞÂ½áµã
+	//è®©poså‰ä¸€ä¸ªç»“ç‚¹çš„nextæŒ‡å‘æ–°ç»“ç‚¹
 	q->next = p;
 	return p;
 
@@ -114,17 +114,122 @@ int list_delete(linklist H, int pos)
 		return -1;
 	}
 	linklist q;
-	q = list_get(H,pos - 1);//ÕÒµ½ÒªÉ¾³ı½áµãµÄÇ°Ò»¸ö½áµã
-	//ÕÒ²»µ½ËµÃ÷Õâ¸ö½áµã²»ºÏ·¨
+	q = list_get(H,pos - 1);//æ‰¾åˆ°è¦åˆ é™¤ç»“ç‚¹çš„å‰ä¸€ä¸ªç»“ç‚¹
+	//æ‰¾ä¸åˆ°è¯´æ˜è¿™ä¸ªç»“ç‚¹ä¸åˆæ³•
 	if (q == NULL)
 	{
 		return -1;
 	}
-	//ÕÒµ½Õâ¸ö½Úµãºó
+	//æ‰¾åˆ°è¿™ä¸ªèŠ‚ç‚¹å
 	linklist p;
-	p = q->next;//´¢´æÒªÉ¾³ı½áµãµÄÖ¸Õë
-	q->next = q->next->next;//ÈÃÇ°Ò»¸ö½áµãÖ¸ÏòÒªÉ¾³ı½áµãµÄÏÂÒ»¸ö½áµã
-	free(p);//É¾³ıÒªÉ¾³ıµÄ½áµã
+	p = q->next;//å‚¨å­˜è¦åˆ é™¤ç»“ç‚¹çš„æŒ‡é’ˆ
+	q->next = q->next->next;//è®©å‰ä¸€ä¸ªç»“ç‚¹æŒ‡å‘è¦åˆ é™¤ç»“ç‚¹çš„ä¸‹ä¸€ä¸ªç»“ç‚¹
+	free(p);//åˆ é™¤è¦åˆ é™¤çš„ç»“ç‚¹
 	p = NULL;
 	return 0;
 }
+linklist list_free(linklist H)
+{
+	linklist p;
+	p = H;
+	if (H == NULL)
+	{
+		printf("H is ilegal\n");
+		return NULL;
+	}
+	printf("free: ");
+	while (H->next != NULL)
+	{
+		H = H->next;
+		printf("%d ", p->data);
+		free(p);
+		p = H;	
+	}
+	return NULL;
+}
+int list_reverse(linklist H)//é“¾è¡¨ç¿»è½¬ï¼Œè¡¨å¤´ä¸å˜ï¼Œå…¶ä»–å…ƒç´ å€’åºæ’åˆ—
+{
+	if (H == NULL)
+	{
+		printf("H is ilegal\n");
+		return -1;
+	}
+	if (H->next->next == NULL)
+	{
+		return 0;//åªæœ‰ä¸€ä¸ªå…ƒç´ ä¸éœ€è¦ç¿»è½¬
+	}
+	linklist p, q,r;
+	p = H->next;//è¿™æ˜¯åŸå§‹é“¾è¡¨ç¬¬ä¸€ä¸ªç»“ç‚¹çš„æŒ‡é’ˆ
+	q = p->next;//è¿™æ˜¯åŸå§‹é“¾è¡¨ç¬¬äºŒä¸ªç»“ç‚¹çš„æŒ‡é’ˆ
+	p->next = NULL;//å°†åŸå§‹é“¾è¡¨çš„ç¬¬ä¸€ä¸ªç»“ç‚¹ä¸åç»­ç»“ç‚¹æ–­å¼€
+	//ä»ç¬¬äºŒä¸ªç»“ç‚¹å¼€å§‹ï¼Œä¾æ¬¡å°†æ‰€æœ‰ç»“ç‚¹éƒ½æ”¾å…¥è¡¨å¤´ä¸ç¬¬ä¸€ä¸ªç»“ç‚¹ä¹‹é—´
+	while (q != NULL)
+	{
+		r = q->next;//å‚¨å­˜éœ€è¦å€’ç½®çš„ç»“ç‚¹çš„ä¸‹ä¸€ä¸ªç»“ç‚¹ä¿¡æ¯
+		//å°†qç»“ç‚¹æ”¾åœ¨è¡¨å¤´ä¸ç¬¬ä¸€ä¸ªèŠ‚ç‚¹ä¹‹é—´
+		q->next = p;
+		H->next = q;
+		//å°†æ­¤æ—¶çš„ç¬¬ä¸€ä¸ªç»“ç‚¹æ›´æ–°
+		p = q;
+		//å‡†å¤‡å€’ç½®ä¸‹ä¸€ä¸ªç»“ç‚¹
+		q =r;
+	}
+	return 0;
+}
+//æ±‚ç›¸é‚»ä¸¤ä¸ªç»“ç‚¹å’Œçš„æœ€å¤§å€¼,è¿”å›å…¶ä¸­ç¬¬ä¸€ä¸ªç»“ç‚¹çš„æŒ‡é’ˆ
+linklist list_adjmax(linklist H)
+{
+	data_t sum_hold,sun_new;
+	linklist p,r;
+	if (H == NULL)
+	{
+		printf("H is ilegal\n");
+		return NULL;
+	}
+	if (H->next == NULL)
+	{
+		printf("there is only one junction\n");
+		return NULL;
+	}
+	if (H->next->next == NULL)//åªæœ‰ä¸¤ä¸ªç»“ç‚¹æ—¶ï¼Œç›´æ¥è¿”å›ç¬¬ä¸€ä¸ªç»“ç‚¹çš„æŒ‡é’ˆå°±è¡Œ
+	{
+		return H->next;
+	}
+	p = H->next->next;//ç¬¬äºŒä¸ªèŠ‚ç‚¹çš„åœ°å€
+	H = H->next;//ç¬¬ä¸€ä¸ªç»“ç‚¹çš„åœ°å€
+	r = H;//ç”¨äºè®°å½•æœ€å¤§å€¼å‡ºç°çš„ä½ç½®
+	sum_hold =0;
+	sun_new = 0;
+	while (p!=NULL)
+	{
+		sun_new = H->data + p->data;
+		if(sum_hold<sun_new)
+		{
+			sum_hold = sun_new;
+			r = H;
+		}
+		H = H->next;
+		p = p->next;
+	}
+	printf("adjmax=%d\n", r->data);
+	return r;
+}
+//åˆå¹¶ä¸¤ä¸ªé¡ºåºé“¾è¡¨,è¿”å›H1çš„æŒ‡é’ˆ
+linklist list_merge(linklist H1, linklist H2)
+{
+	if (H1 == NULL)
+	{
+		printf("H1 is ilegal\n");
+		return NULL;
+	}
+	if (H2 == NULL)
+	{
+		printf("H2 is ilegal\n");
+		return NULL;
+	}
+	linklist r;
+	r = H1; 
+	
+
+}
+
